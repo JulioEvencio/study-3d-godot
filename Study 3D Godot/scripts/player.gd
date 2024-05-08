@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @onready var _head := get_node("Head")
+@onready var _interaction_ray_cast := get_node("Head/InteractionRayCast")
 
 var _normal_speed := 3.0
 var _sprint_speed := 5.0
@@ -20,6 +21,9 @@ func _unhandled_key_input(event : InputEvent):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _process(_delta : float):
+	_check_interaction()
 
 func _physics_process(_delta : float) -> void:
 	_move()
@@ -44,3 +48,8 @@ func _move() -> void:
 	velocity.z = direction.z * _speed
 	
 	move_and_slide()
+
+func _check_interaction() -> void:
+	if Input.is_action_just_pressed("interact") and _interaction_ray_cast.is_colliding():
+		if _interaction_ray_cast.get_collider() is Interactable:
+			_interaction_ray_cast.get_collider().start_interaction()
