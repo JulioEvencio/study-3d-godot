@@ -1,2 +1,2 @@
-# study-fps-3d-godot
-A simple FPS 3D game
+# study-3d-godot
+study-3d-godot
