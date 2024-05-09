@@ -4,10 +4,12 @@ class_name Player
 @onready var _head := get_node("Head")
 @onready var _interaction_ray_cast := get_node("Head/InteractionRayCast")
 
+var is_hitting := false
+
 var _normal_speed := 3.0
 var _sprint_speed := 5.0
 var _speed := 3.0
-var _jump_velocity := 4.0
+var _jump_velocity := 6.0
 var _gravity := 0.2
 var _mouse_sensitivity := 0.002
 
@@ -50,6 +52,18 @@ func _move() -> void:
 	move_and_slide()
 
 func _check_interaction() -> void:
-	if Input.is_action_just_pressed("interact") and _interaction_ray_cast.is_colliding():
-		if _interaction_ray_cast.get_collider() is Interactable:
+	if _interaction_ray_cast.is_colliding():
+		var collider = _interaction_ray_cast.get_collider()
+		
+		if not collider is Interactable:
+			return
+		
+		if Input.is_action_just_pressed("interact"):
 			_interaction_ray_cast.get_collider().start_interaction()
+		
+		if not is_hitting:
+			is_hitting = true
+			EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.InteractionPrompt, collider.prompt)
+	elif is_hitting:
+		is_hitting = false
+		EventSystem.BUL_destroy_bulletin.emit(BulletinConfig.Keys.InteractionPrompt)
