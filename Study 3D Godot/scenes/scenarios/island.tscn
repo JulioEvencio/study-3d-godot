@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1h1wxv5xcif5"]
+[gd_scene load_steps=12 format=3 uid="uid://b1h1wxv5xcif5"]
 
 [ext_resource type="PackedScene" uid="uid://3kacb0r2lydf" path="res://assets/meshes/terrain.tscn" id="1_1q5iw"]
 [ext_resource type="Script" path="res://scripts/scenarios/island.gd" id="1_5g7r3"]
 [ext_resource type="PackedScene" uid="uid://c2wotv7ahcfua" path="res://scenes/objects/stick.tscn" id="4_5rcts"]
 [ext_resource type="PackedScene" uid="uid://dg1hmf8ke5qbb" path="res://scenes/entities/player.tscn" id="4_iox55"]
+[ext_resource type="PackedScene" uid="uid://docsbkm707rw7" path="res://scenes/objects/stone.tscn" id="5_d0lg7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jc3h"]
 sky_top_color = Color(0.32549, 0.878431, 1, 1)
@@ -77,3 +78,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81155, 0, 3.23494)
 
 [node name="Stick3" parent="Node3D/Objects/Sticks" instance=ExtResource("4_5rcts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32997, 0, -2.12955)
+
+[node name="Stones" type="Node3D" parent="Node3D/Objects"]
+
+[node name="Stone" parent="Node3D/Objects/Stones" instance=ExtResource("5_d0lg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.12619)
+
+[node name="Stone2" parent="Node3D/Objects/Stones" instance=ExtResource("5_d0lg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94727, 0, 4.78967)
+
+[node name="Stone3" parent="Node3D/Objects/Stones" instance=ExtResource("5_d0lg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42826, 0, 3.62484)

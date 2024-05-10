@@ -45,8 +45,10 @@ func _move() -> void:
 
 func _check_interaction() -> void:
 	if _ray_cast_3D.is_colliding():
-		var object = _ray_cast_3D.get_collider()
+		var object : CustomObject = _ray_cast_3D.get_collider()
+		
 		_label.text = object.get_object_type()
+		
 		if Input.is_action_just_pressed("interact"):
 			object.queue_free()
 	else:

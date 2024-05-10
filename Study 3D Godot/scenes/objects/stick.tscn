@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2wotv7ahcfua"]
+[gd_scene load_steps=5 format=3 uid="uid://c2wotv7ahcfua"]
 
 [ext_resource type="PackedScene" uid="uid://k652137xj8ay" path="res://scenes/objects/object.tscn" id="1_dx27u"]
 [ext_resource type="PackedScene" uid="uid://ojg0nfbeok1d" path="res://assets/meshes/stick.tscn" id="1_fpyi5"]
 [ext_resource type="Script" path="res://scripts/objects/stick.gd" id="2_4y7jp"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ftve"]
+size = Vector3(0.200256, 0.0654144, 0.659134)
+
 [node name="Stick" instance=ExtResource("1_dx27u")]
 script = ExtResource("2_4y7jp")
 
-[node name="Stick" parent="." index="0" instance=ExtResource("1_fpyi5")]
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0174866, 0.0151901, 0.00139618)
+shape = SubResource("BoxShape3D_1ftve")
+
+[node name="Stick" parent="." index="1" instance=ExtResource("1_fpyi5")]
