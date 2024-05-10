@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Study 3D Godot"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/scenarios/island.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-EventSystem="*res://scripts/event_system.gd"
+EventSystem="*res://old/scripts/event_system.gd"
 
 [display]
 
