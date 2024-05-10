@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2wotv7ahcfua"]
+
+[ext_resource type="PackedScene" uid="uid://k652137xj8ay" path="res://scenes/objects/object.tscn" id="1_dx27u"]
+[ext_resource type="PackedScene" uid="uid://ojg0nfbeok1d" path="res://assets/meshes/stick.tscn" id="1_fpyi5"]
+[ext_resource type="Script" path="res://scripts/objects/stick.gd" id="2_4y7jp"]
+
+[node name="Stick" instance=ExtResource("1_dx27u")]
+script = ExtResource("2_4y7jp")
+
+[node name="Stick" parent="." index="0" instance=ExtResource("1_fpyi5")]

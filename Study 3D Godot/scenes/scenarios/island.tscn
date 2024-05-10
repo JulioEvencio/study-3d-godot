@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1h1wxv5xcif5"]
+[gd_scene load_steps=11 format=3 uid="uid://b1h1wxv5xcif5"]
 
 [ext_resource type="PackedScene" uid="uid://3kacb0r2lydf" path="res://assets/meshes/terrain.tscn" id="1_1q5iw"]
 [ext_resource type="Script" path="res://scripts/scenarios/island.gd" id="1_5g7r3"]
+[ext_resource type="PackedScene" uid="uid://c2wotv7ahcfua" path="res://scenes/objects/stick.tscn" id="4_5rcts"]
 [ext_resource type="PackedScene" uid="uid://dg1hmf8ke5qbb" path="res://scenes/entities/player.tscn" id="4_iox55"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jc3h"]
@@ -32,23 +33,47 @@ size = Vector2(2000, 2000)
 [node name="Island" type="Node"]
 script = ExtResource("1_5g7r3")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3onec")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.86741, 0.497595, 0, -0.497595, 0.86741, 0, 0, 0)
 light_color = Color(0.996078, 1, 0.729412, 1)
 shadow_enabled = true
 
-[node name="Terrain" parent="." instance=ExtResource("1_1q5iw")]
+[node name="Tiles" type="Node3D" parent="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
+[node name="Terrain" parent="Node3D/Tiles" instance=ExtResource("1_1q5iw")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Tiles/Terrain"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Tiles/Terrain/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2081c")
 
-[node name="Water" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="Node3D/Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79272, 0)
 mesh = SubResource("PlaneMesh_kiflu")
+skeleton = NodePath("../../..")
 
-[node name="Player" parent="." instance=ExtResource("4_iox55")]
+[node name="Entities" type="Node3D" parent="Node3D"]
+
+[node name="Player" parent="Node3D/Entities" instance=ExtResource("4_iox55")]
+
+[node name="Objects" type="Node3D" parent="Node3D"]
+
+[node name="Sticks" type="Node3D" parent="Node3D/Objects"]
+
+[node name="Stick" parent="Node3D/Objects/Sticks" instance=ExtResource("4_5rcts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1146, 0, -3.06872)
+
+[node name="Stick2" parent="Node3D/Objects/Sticks" instance=ExtResource("4_5rcts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81155, 0, 3.23494)
+
+[node name="Stick3" parent="Node3D/Objects/Sticks" instance=ExtResource("4_5rcts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32997, 0, -2.12955)

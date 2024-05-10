@@ -3,6 +3,7 @@ class_name Player
 
 @onready var _head : Node3D = get_node("Head")
 @onready var _ray_cast_3D : RayCast3D = get_node("Head/RayCast3D")
+@onready var _label : Label = get_node("HUD/Label")
 
 var _base_speed : float = 3.0
 var _sprint_speed : float = 5.0
@@ -43,4 +44,10 @@ func _move() -> void:
 	move_and_slide()
 
 func _check_interaction() -> void:
-	pass
+	if _ray_cast_3D.is_colliding():
+		var object = _ray_cast_3D.get_collider()
+		_label.text = object.get_object_type()
+		if Input.is_action_just_pressed("interact"):
+			object.queue_free()
+	else:
+		_label.text = ""

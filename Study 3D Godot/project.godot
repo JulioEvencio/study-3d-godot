@@ -15,10 +15,6 @@ run/main_scene="res://scenes/scenarios/island.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-EventSystem="*res://old/scripts/event_system.gd"
-
 [display]
 
 window/size/viewport_width=1920
@@ -26,6 +22,10 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -72,7 +72,7 @@ escape={
 
 [layer_names]
 
-3d_physics/layer_1="ground"
-3d_physics/layer_2="player"
-3d_physics/layer_3="mob"
-3d_physics/layer_4="interactable"
+3d_physics/layer_1="player"
+3d_physics/layer_2="tiles"
+3d_physics/layer_3="objects"
+3d_physics/layer_4="mobs"
