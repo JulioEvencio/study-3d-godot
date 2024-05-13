@@ -1,0 +1,4 @@
+extends Node
+
+signal BULL_create_bulletin
+signal BULL_destroy_bulletin

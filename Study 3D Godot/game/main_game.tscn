@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddm04vo8fjdlx"]
+[gd_scene load_steps=16 format=3 uid="uid://ddm04vo8fjdlx"]
 
 [ext_resource type="PackedScene" uid="uid://b0oh3g2n3tpuc" path="res://meshes/terrain.tscn" id="1_hsklm"]
 [ext_resource type="PackedScene" uid="uid://betfibqjinoti" path="res://meshes/tree.tscn" id="2_skaly"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cq8xhl1rnain0" path="res://items/interactables/pickuppable_stone.tscn" id="5_vy14j"]
 [ext_resource type="PackedScene" uid="uid://cvd3derpejpjo" path="res://items/interactables/pickuppable_stick.tscn" id="6_sob5p"]
 [ext_resource type="PackedScene" uid="uid://cund54rjxmbqn" path="res://items/interactables/pickuppable_plant.tscn" id="7_wk0lq"]
+[ext_resource type="PackedScene" uid="uid://n5pnnad76bgh" path="res://ui/hud/hud.tscn" id="8_r7bf7"]
+[ext_resource type="Script" path="res://game/managers/bulletin_controller.gd" id="9_wsl74"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t724j"]
 sky_top_color = Color(0.32549, 0.878431, 1, 1)
@@ -102,3 +104,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32593, 0, -1.70696)
 
 [node name="PickuppablePlant3" parent="StageController/Island" instance=ExtResource("7_wk0lq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29648, 0, 6.3458)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUDController" type="Node" parent="UILayer"]
+
+[node name="HUD" parent="UILayer/HUDController" instance=ExtResource("8_r7bf7")]
+
+[node name="BulletinController" type="Node" parent="UILayer"]
+script = ExtResource("9_wsl74")
