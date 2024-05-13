@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddm04vo8fjdlx"]
+[gd_scene load_steps=14 format=3 uid="uid://ddm04vo8fjdlx"]
 
 [ext_resource type="PackedScene" uid="uid://b0oh3g2n3tpuc" path="res://meshes/terrain.tscn" id="1_hsklm"]
 [ext_resource type="PackedScene" uid="uid://betfibqjinoti" path="res://meshes/tree.tscn" id="2_skaly"]
 [ext_resource type="PackedScene" uid="uid://ckexbex6qdm3u" path="res://meshes/mushroom.tscn" id="3_5reyx"]
 [ext_resource type="PackedScene" uid="uid://de1b4hq7m3r1u" path="res://actors/player/player.tscn" id="4_wysnu"]
+[ext_resource type="PackedScene" uid="uid://cq8xhl1rnain0" path="res://items/interactables/pickuppable_stone.tscn" id="5_vy14j"]
+[ext_resource type="PackedScene" uid="uid://cvd3derpejpjo" path="res://items/interactables/pickuppable_stick.tscn" id="6_sob5p"]
+[ext_resource type="PackedScene" uid="uid://cund54rjxmbqn" path="res://items/interactables/pickuppable_plant.tscn" id="7_wk0lq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t724j"]
 sky_top_color = Color(0.32549, 0.878431, 1, 1)
@@ -47,6 +50,7 @@ shadow_enabled = true
 [node name="Terrain" parent="StageController/Island" instance=ExtResource("1_hsklm")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StageController/Island/Terrain"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StageController/Island/Terrain/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hqdmq")
@@ -71,3 +75,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20423, 0, 6.59621)
 
 [node name="Mushroom2" parent="StageController/Island" instance=ExtResource("3_5reyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5004, 0, 4.91621)
+
+[node name="PickuppableStone" parent="StageController/Island" instance=ExtResource("5_vy14j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41245, 0, 2.15115)
+
+[node name="PickuppableStone2" parent="StageController/Island" instance=ExtResource("5_vy14j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19927, 0, -1.38391)
+
+[node name="PickuppableStone3" parent="StageController/Island" instance=ExtResource("5_vy14j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81166, 0, -5.36392)
+
+[node name="PickuppableStick" parent="StageController/Island" instance=ExtResource("6_sob5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01672, 0, -5.11506)
+
+[node name="PickuppableStick2" parent="StageController/Island" instance=ExtResource("6_sob5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22945, 0, -7.06738)
+
+[node name="PickuppableStick3" parent="StageController/Island" instance=ExtResource("6_sob5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89511, 0, 3.58941)
+
+[node name="PickuppablePlant" parent="StageController/Island" instance=ExtResource("7_wk0lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3384, 0, 0)
+
+[node name="PickuppablePlant2" parent="StageController/Island" instance=ExtResource("7_wk0lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32593, 0, -1.70696)
+
+[node name="PickuppablePlant3" parent="StageController/Island" instance=ExtResource("7_wk0lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29648, 0, 6.3458)
