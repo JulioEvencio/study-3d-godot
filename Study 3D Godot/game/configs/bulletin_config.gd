@@ -5,7 +5,7 @@ enum Keys {
 }
 
 const BULLETIN_PATHS := {
-	Keys.InteractionPrompt: "res://bulletins/interaction_prompt.gd"
+	Keys.InteractionPrompt: "res://bulletins/interaction_prompt.tscn"
 }
 
 static func get_bulletin(key: Keys) -> Bulletin:
