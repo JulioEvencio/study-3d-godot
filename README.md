@@ -1,2 +1,3 @@
-# study-3d-godot
+# Study 3D Godot
+
 A survival game
